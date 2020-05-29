@@ -1,4 +1,5 @@
 import { Component, OnInit, NgZone, ViewChild } from '@angular/core';
+import { Router } from "@angular/router";
 import {CdkTextareaAutosize} from '@angular/cdk/text-field';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatTable } from "@angular/material/table";
@@ -16,7 +17,7 @@ export class KitManagerComponent implements OnInit {
   displayedColumns: string[] = ['date', 'rationDays', 'givenBy'];
   datasource: RationKit[];
   @ViewChild(MatTable) private table : MatTable<any>;
-  constructor(private beneficiaryService: BeneficiaryService) { };
+  constructor(private beneficiaryService: BeneficiaryService,private router:Router) { };
 
   ngOnInit(): void {
   }
@@ -39,8 +40,6 @@ addEntry(){
     alert('check samagra id first');
     return;
   }
-  this.beneficiaryService.addNewRationKit('test','test','Danish',new Date()).then((rationKit:RationKit) => {  this.datasource.push(rationKit);
-    this.table.renderRows();
-})
+  this.router.navigateByUrl('/addRationKit');
 }
 }

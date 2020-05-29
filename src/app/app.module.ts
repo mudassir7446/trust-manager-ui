@@ -13,6 +13,8 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DefaultMaterialModule} from './material.module';
 import { KitManagerComponent } from "./kitmanager/kitmanager.component";
+import { LoginComponent } from "./login/login.component";
+import { AddRationKitComponent } from "./add-ration-kit/add-ration-kit.component";
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { KitManagerComponent } from "./kitmanager/kitmanager.component";
     TopBarComponent,
     BottomBarComponent,
     MainComponent,
-    KitManagerComponent
+    KitManagerComponent,
+    LoginComponent,
+    AddRationKitComponent
   ],
   imports: [
     BrowserModule,

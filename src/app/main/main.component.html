@@ -1,1 +1,2 @@
-<app-kitmanager></app-kitmanager>
+<app-kitmanager *ngIf="checkLoggedIn();"></app-kitmanager>
+<app-login *ngIf="!checkLoggedIn();"></app-login>

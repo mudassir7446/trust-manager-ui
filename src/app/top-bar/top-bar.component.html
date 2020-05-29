@@ -1,5 +1,4 @@
 <mat-toolbar>
 <span style="text-aligh:centre" >Ration Kit Management</span>
-<button mat-raised-button (click)="loginButtonClick()" >{{loginButtonText}}</button>
-<mat-label *ngIf="user">{{user.name}}</mat-label>
+<button mat-raised-button *ngIf="isLoggedIn() " (click)="logoutButtonClick()" >Logout</button>
 </mat-toolbar>
