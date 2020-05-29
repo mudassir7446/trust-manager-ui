@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'trust-manager-ui';
+  title = 'Covid-19 Crisis';
 }
