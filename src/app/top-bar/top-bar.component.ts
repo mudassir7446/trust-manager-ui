@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from "../authentication.service";
 import { User } from "../user";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-top-bar',
@@ -8,24 +9,18 @@ import { User } from "../user";
   styleUrls: ['./top-bar.component.css']
 })
 export class TopBarComponent implements OnInit {
-
-  loginButtonText : string = 'Login';
-  isLoggedIn : boolean = false;
-  user:User;
-  constructor(private  authenticationService:AuthenticationService) { }
+  constructor(private  authenticationService:AuthenticationService,private router:Router) { }
 
   ngOnInit(): void {
   }
 
-  loginButtonClick(){
-    if(this.isLoggedIn){
-      if(this.authenticationService.logout(this.user)){
-        this.user = undefined;
-      }
-  }else {
-    this.user = this.authenticationService.login('test','test');
-  }
-  this.isLoggedIn = this.user === undefined?false:true;
-    this.loginButtonText =  this.isLoggedIn?'Logout':'Login';
-  }
+  logoutButtonClick(){
+      this.authenticationService.logout()
+      // redirect to login main page
+        this.router.navigateByUrl('');
+    }
+
+    isLoggedIn():boolean{
+      return this.authenticationService.isLoggedIn();
+    }
 }

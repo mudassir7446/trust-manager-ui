@@ -21,7 +21,7 @@ export class AuthenticationService {
       return {name:'Mudassir Rehman', role: 'Admin'};
     }
 
-    public logout(user:User):boolean {
+    public logout():boolean {
       this.accessToken = undefined;
       return true;
     }
