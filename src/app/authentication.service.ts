@@ -22,6 +22,7 @@ export class AuthenticationService {
     }
 
     public logout(user:User):boolean {
+      this.accessToken = undefined;
       return true;
     }
 }

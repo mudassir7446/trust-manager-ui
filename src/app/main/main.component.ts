@@ -1,4 +1,5 @@
 import { Component, OnInit, NgZone, ViewChild } from '@angular/core';
+import { AuthenticationService} from '../authentication.service';
 
 @Component({
   selector: 'app-main',
@@ -6,8 +7,12 @@ import { Component, OnInit, NgZone, ViewChild } from '@angular/core';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  constructor() { };
+  constructor(private authenticationService:AuthenticationService) { };
 
   ngOnInit(): void {
+  }
+
+  checkLoggedIn():boolean {
+    return this.authenticationService.isLoggedIn();
   }
 }
