@@ -9,7 +9,7 @@ import { environment } from './../environments/environment';
 })
 export class HttpService {
   private accessToken:string;
-  private baseURL:string = environment.apiBaseUrl+"/";
+  private baseURL:string = environment.apiBaseUrl+"/"+environment.context+"/";
   constructor(private httpClient : HttpClient) { }
 
   public post(resourcePath: string ,requestBody:any):any{
