@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as uuid from "uuid";
 import { User } from "./user";
+import { HttpService } from "./http.service";
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import { User } from "./user";
 export class AuthenticationService {
 
   private accessToken : string;
-  constructor() { }
+  constructor(private httpService:HttpService) { }
 
 
     isLoggedIn(){
@@ -17,12 +18,21 @@ export class AuthenticationService {
 
     public login(username:string, password:string): User {
       //TODO call login service
-      this.accessToken = uuid.v4();
+      this.httpService.post('auth/basic/login',{username:username,password:password}).subscribe(response =>{
+        this.accessToken = response.accessToken;
+        // share the access token with http HttpService
+        this.httpService.setAccessToken(this.accessToken);
+      });
+
       return {name:'Mudassir Rehman', role: 'Admin'};
     }
 
     public logout():boolean {
-      this.accessToken = undefined;
+      this.httpService.get('auth/basic/logout').subscribe(response =>{
+        this.accessToken = undefined;
+        // reset the access token with http HttpService
+        this.httpService.setAccessToken(undefined);
+      });
       return true;
     }
 }
