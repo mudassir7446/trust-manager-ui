@@ -1,25 +1,21 @@
 import { Injectable } from '@angular/core';
-import {RationKit} from './ration-kit'
-
-const ELEMENT_DATA: RationKit[] = [
-  {date: 1588636800000, rationDays: 10, givenBy: 'Anjuman'},
-  {date: 1589500800000, rationDays: 8, givenBy: 'Danish'},
-  {date: 1590687530000, rationDays: 10, givenBy: 'Shifa Rehmani'},
-];
-
+import {RationKit} from './ration-kit';
+import { HttpService } from "./http.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class BeneficiaryService {
 
-  constructor() { }
+  constructor(private httpService:HttpService) { }
 
-  public findRationKitHistoryByIdentification(samagraId:string): RationKit[] {
-    return ELEMENT_DATA.concat([]);
+  public findRationKitHistoryByIdentification(idType:string,identification:string): RationKit[] {
+  return this.httpService.get('covid/beneficiary/rationKit/history/'+idType+"/"+identification);
   }
 
-  public addNewRationKit(samagraId:string,organization:string, quantity:string, date: Date): Promise<RationKit>{
-    return new Promise((resolve,reject)=>{ resolve({date: 1590687530000,rationDays:10,givenBy:'Test'});});
+  public addNewRationKit(identification:string, idType:string,numberOfDays:number): Promise<RationKit>{
+
+    let params = {"numberOfDays":numberOfDays+'',"beneficiaryId":identification,"idType":idType}
+    return this.httpService.put('covid/beneficiary/rationKit',{},params).toPromise();
   }
 }

@@ -7,7 +7,7 @@ import { AddRationKitComponent } from "./add-ration-kit/add-ration-kit.component
 const routes: Routes = [
   {path: 'stats',component : StatsComponent},
   {path:'',component:MainComponent},
-  {path:'addRationKit', component:AddRationKitComponent}
+  {path:'addRationKit/:idType/:identification', component:AddRationKitComponent}
 ];
 
 @NgModule({

@@ -15,6 +15,7 @@ import {DefaultMaterialModule} from './material.module';
 import { KitManagerComponent } from "./kitmanager/kitmanager.component";
 import { LoginComponent } from "./login/login.component";
 import { AddRationKitComponent } from "./add-ration-kit/add-ration-kit.component";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AddRationKitComponent } from "./add-ration-kit/add-ration-kit.component
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
-    DefaultMaterialModule
+    DefaultMaterialModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
