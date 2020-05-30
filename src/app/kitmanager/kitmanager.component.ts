@@ -34,6 +34,7 @@ checkIdentificationDetails(){
 
 clearIdentification(){
   this.datasource = undefined;
+  this.idType = undefined;
   this.identification = undefined;
 }
 
