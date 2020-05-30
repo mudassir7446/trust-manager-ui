@@ -13,26 +13,28 @@ import { RationKit} from "../ration-kit";
 })
 export class KitManagerComponent implements OnInit {
 
-  samagraId;
+  identification;
   displayedColumns: string[] = ['date', 'rationDays', 'givenBy'];
   datasource: RationKit[];
+  idType:string;
+   idTypes = [{name: "Aadhaar",value:"aadhar"},{name: "Samagra Id",value:"samagra"}];
   @ViewChild(MatTable) private table : MatTable<any>;
   constructor(private beneficiaryService: BeneficiaryService,private router:Router) { };
 
   ngOnInit(): void {
   }
 
-checkSamagraDetails(){
-  if(this.samagraId === undefined){
+checkIdentificationDetails(){
+  if(this.identification === undefined){
     alert('Enter Samagra Id');
     return;
   }
-  this.datasource = this.beneficiaryService.findRationKitHistoryBySamagraId(this.samagraId);
+  this.datasource = this.beneficiaryService.findRationKitHistoryByIdentification(this.identification);
 }
 
-clearSamagraId(){
+clearIdentification(){
   this.datasource = undefined;
-  this.samagraId = undefined;
+  this.identification = undefined;
 }
 
 addEntry(){

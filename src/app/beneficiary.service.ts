@@ -15,7 +15,7 @@ export class BeneficiaryService {
 
   constructor() { }
 
-  public findRationKitHistoryBySamagraId(samagraId:string): RationKit[] {
+  public findRationKitHistoryByIdentification(samagraId:string): RationKit[] {
     return ELEMENT_DATA.concat([]);
   }
 

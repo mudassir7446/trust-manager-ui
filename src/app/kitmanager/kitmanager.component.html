@@ -1,10 +1,20 @@
 <mat-form-field>
-  <mat-label>Samagra ID : </mat-label>
-  <input matInput [(ngModel)]="samagraId" type="text">
-  <mat-hint>Samagra Family ID</mat-hint>
+  <mat-label>ID</mat-label>
+  <input matInput [(ngModel)]="identification" type="text">
+  <mat-hint>Govt ID Number</mat-hint>
 </mat-form-field>
-<button mat-raised-button (click)="checkSamagraDetails()" >Check</button>
-<button mat-raised-button (click)="clearSamagraId()">Clear</button>
+<mat-form-field>
+  <mat-label>ID Type</mat-label>
+  <mat-select [(value)]="idType">
+    <mat-option *ngFor="let idType of idTypes" [value]="idType.value">
+      {{idType.name}}
+      </mat-option>
+    </mat-select>
+  <mat-hint>Aadhar,Samagra etc.</mat-hint>
+</mat-form-field>
+<br>
+<button mat-raised-button (click)="checkIdentificationDetails()" >Check</button>
+<button mat-raised-button (click)="clearIdentification()">Clear</button>
 <button mat-raised-button (click)="addEntry()">Add Entry</button>
 <table mat-table [dataSource]="datasource"  class="mat-elevation-z8">
 
