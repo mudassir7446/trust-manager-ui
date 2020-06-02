@@ -1,4 +1,8 @@
 <mat-toolbar>
 <span style="text-aligh:centre" >Ration Kit Management</span>
-<button mat-raised-button *ngIf="isLoggedIn() " (click)="logoutButtonClick()" >Logout</button>
+<mat-menu #appMenu="matMenu">
+  <button mat-menu-item *ngIf="isLoggedIn() " (click)="logoutButtonClick()" >Logout</button>
+</mat-menu>
+<button mat-icon-button *ngIf="isLoggedIn() " [matMenuTriggerFor]="appMenu" ><mat-icon>more_vert</mat-icon>
+</button>
 </mat-toolbar>
