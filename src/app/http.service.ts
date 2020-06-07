@@ -9,24 +9,26 @@ import { environment } from './../environments/environment';
 })
 export class HttpService {
   private accessToken:string;
+  private username:string;
   private baseURL:string = environment.apiBaseUrl+"/"+environment.context+"/";
   constructor(private httpClient : HttpClient) { }
 
   public post(resourcePath: string ,requestBody:any):any{
     //TODO http communication
-    return this.httpClient.post(this.finalURI(resourcePath),requestBody,{headers:{"accessToken":this.accessToken===undefined?'':this.accessToken}});
+    return this.httpClient.post(this.finalURI(resourcePath),requestBody,{headers:{"Authorization":this.accessToken===undefined?'':this.username+" "+this.accessToken}});
   }
 
   public get(resourcePath:string):any{
-    return this.httpClient.get(this.finalURI(resourcePath),{headers:{"accessToken":this.accessToken===undefined?'':this.accessToken}});
+    return this.httpClient.get(this.finalURI(resourcePath),{headers:{"Authorization":this.accessToken===undefined?'':this.username+" "+this.accessToken}});
   }
 
   public put(resourcePath:string,requestBody:any,requestParams?:{ [param: string]: string | string[]; }):any{
-    return this.httpClient.put(this.finalURI(resourcePath),requestBody,{headers:{"accessToken":this.accessToken===undefined?'':this.accessToken},params:requestParams});
+    return this.httpClient.put(this.finalURI(resourcePath),requestBody,{headers:{"Authorization":this.accessToken===undefined?'':this.username+" "+this.accessToken},params:requestParams});
   }
 
-  public setAccessToken(accessToken:string):void{
+  public setAccessToken(username:string,accessToken:string):void{
     this.accessToken = accessToken;
+    this.username = username;
   }
 
   private finalURI(resourcePath:string):string{

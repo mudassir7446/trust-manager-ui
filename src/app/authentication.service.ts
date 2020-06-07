@@ -9,6 +9,7 @@ import { HttpService } from "./http.service";
 export class AuthenticationService {
 
   private accessToken : string;
+  private username:string;
   constructor(private httpService:HttpService) { }
 
 
@@ -20,8 +21,9 @@ export class AuthenticationService {
       //TODO call login service
       this.httpService.post('auth/basic/login',{username:username,password:password}).subscribe(response =>{
         this.accessToken = response.accessToken;
+        this.username = username;
         // share the access token with http HttpService
-        this.httpService.setAccessToken(this.accessToken);
+        this.httpService.setAccessToken(this.username,this.accessToken);
       });
 
       return {name:'Mudassir Rehman', role: 'Admin'};
@@ -31,7 +33,7 @@ export class AuthenticationService {
       this.httpService.get('auth/basic/logout').subscribe(response =>{
         this.accessToken = undefined;
         // reset the access token with http HttpService
-        this.httpService.setAccessToken(undefined);
+        this.httpService.setAccessToken(undefined,undefined);
       });
       return true;
     }
