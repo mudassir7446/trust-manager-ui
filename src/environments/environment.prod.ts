@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiBaseUrl:"https://ec2-54-242-167-6.compute-1.amazonaws.com",
+  apiBaseUrl:"https://ec2-54-237-34-168.compute-1.amazonaws.com",
   context:'covidTrust'
 };
