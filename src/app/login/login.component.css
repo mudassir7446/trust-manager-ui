@@ -1,0 +1,20 @@
+.login-form {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-flow: column;
+  max-width: 95%;
+  margin: 2%;
+  align-items: center;
+}
+
+.login-button {
+  max-width: 100px;
+  align-self: center;
+  display: flex;
+  text-align: center;
+}
+
+.login-field {
+  max-width: 400px;
+}

@@ -1,42 +1,44 @@
-<mat-form-field>
-  <mat-label>ID</mat-label>
-  <input matInput [(ngModel)]="identification" type="text">
-  <mat-hint>Govt ID Number</mat-hint>
-</mat-form-field>
-<mat-form-field>
-  <mat-label>ID Type</mat-label>
-  <mat-select [(value)]="idType">
-    <mat-option *ngFor="let idType of idTypes" [value]="idType.value">
-      {{idType.name}}
+<div>
+  <mat-form-field class="kitmanager-form-field">
+    <mat-label>ID</mat-label>
+    <input matInput [(ngModel)]="identification" type="text">
+    <mat-hint>Govt ID Number</mat-hint>
+  </mat-form-field>
+  <mat-form-field class="kitmanager-form-field">
+    <mat-label>ID Type</mat-label>
+    <mat-select [(value)]="idType">
+      <mat-option *ngFor="let idType of idTypes" [value]="idType.value">
+        {{idType.name}}
       </mat-option>
     </mat-select>
-  <mat-hint>Aadhar,Samagra etc.</mat-hint>
-</mat-form-field>
+    <mat-hint>Aadhar,Samagra etc.</mat-hint>
+  </mat-form-field>
+</div>
 <br>
-<button mat-raised-button (click)="checkIdentificationDetails()" >Check</button>
-<button mat-raised-button (click)="clearIdentification()">Clear</button>
-<button mat-raised-button (click)="addEntry()">Add Entry</button>
-<table mat-table [dataSource]="datasource"  class="mat-elevation-z8">
+<button mat-raised-button (click)="checkIdentificationDetails()" class="kitmanager-buttons">Check</button>
+<button mat-raised-button (click)="clearIdentification()" class="kitmanager-buttons">Clear</button>
+<button mat-raised-button (click)="addEntry()" class=kitmanager-buttons>Add Entry</button>
+<table mat-table [dataSource]="datasource" class="mat-elevation-z8">
 
   <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
 
   <!-- Position Column -->
-  <ng-container matColumnDef="date">
+  <ng-container matColumnDef="date" class="table-cell">
     <th mat-header-cell *matHeaderCellDef>Date</th>
     <td mat-cell *matCellDef="let element"> {{element.date | date: 'yyyy-MM-dd'}} </td>
   </ng-container>
 
   <!-- Name Column -->
-  <ng-container matColumnDef="numberOfDays">
-    <th mat-header-cell *matHeaderCellDef>Ration Days</th>
-    <td mat-cell *matCellDef="let element"> {{element.numberOfDays}} </td>
+  <ng-container matColumnDef="numberOfDays" class="table-cell">
+    <th mat-header-cell *matHeaderCellDef class="table-cell">Ration Days</th>
+    <td mat-cell *matCellDef="let element" class="table-cell"> {{element.numberOfDays}} </td>
   </ng-container>
 
   <!-- Weight Column -->
-  <ng-container matColumnDef="givenBy">
-    <th mat-header-cell *matHeaderCellDef>Given By</th>
-    <td mat-cell *matCellDef="let element"> {{element.givenBy}} </td>
+  <ng-container matColumnDef="givenBy" class="table-cell">
+    <th mat-header-cell *matHeaderCellDef class="table-cell">Given By</th>
+    <td mat-cell *matCellDef="let element" class="table-cell"> {{element.givenBy}} </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

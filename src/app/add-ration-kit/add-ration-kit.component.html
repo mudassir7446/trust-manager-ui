@@ -1,8 +1,8 @@
-<div>
-<mat-form-field>
-  <mat-label>Number of Days</mat-label>
-  <input matInput type="number" [(ngModel)]="numberOfDays" min="0">
-</mat-form-field>
-<br>
-<button mat-raised-button (click)="addRationKit()" >Add</button>
+<div class="add-kit-section">
+  <mat-form-field class="add-kit-form-field">
+    <mat-label>Number of Days</mat-label>
+    <input matInput type="number" [(ngModel)]="numberOfDays" min="0">
+  </mat-form-field>
+  <br>
+  <button mat-raised-button (click)="addRationKit()" class="add-kit-form-button">Add</button>
 </div>
